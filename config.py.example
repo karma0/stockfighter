@@ -1,0 +1,30 @@
+DEFCONF = {
+  'apikey': 'YOUR API KEY',
+  'gm_apikey': 'YOUR WEB INTERFACE API KEY', # Inspect the cookies in your game
+
+  'api_url': "https://api.stockfighter.io/ob/api",
+  'gm_url': "https://www.stockfighter.io/gm",
+
+  'levels': [
+    "first_steps",
+    "chock_a_block",
+    "sell_side",
+  ],
+
+  # Put your level instance IDs here for quick lookup
+  'levelInstances': {
+    "first_steps":   123,
+    "chock_a_block": 123,
+    "sell_side":     123,
+  },
+
+  #'debug': True,
+
+  # Set defaults.  These get replaced when you initialize a new game
+  'venue': 'TESTEX',
+  'stock': 'FOOBAR',
+  'account': 'EXB123456',
+  'dayrate': 5 # every 5 seconds is about 1 day of game time
+}
+CONF = DEFCONF.copy()
+
