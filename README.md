@@ -5,7 +5,7 @@ A Python3 library for the Stockfighter Trades.Exec() API.
 ## Usage
 
     git clone https://github.com/karma0/stockfighter-io-trades.git stockfighter
-    cp stockfighter/config.py.example .
+    cp stockfighter/config.py.example stockfighter/config.py
 
 ## Configuration
 
@@ -21,7 +21,7 @@ A Python3 library for the Stockfighter Trades.Exec() API.
 ### Start a game
 
     from stockfighter.api.game import *
-    from config import *
+    from stockfighter.config import *
     g = Game(CONF, 'sell_side')
     g.start_level()
 
