@@ -20,7 +20,7 @@ class Exchange:
       hdrs = {}
     if not 'X-Starfighter-Authorization' in hdrs:
       hdrs['X-Starfighter-Authorization'] = self._conf['apikey']
-    if not 'Cookie' in hdrs:
+    if not 'Cookie' in hdrs and 'gm_apikey' in self._conf:
       hdrs['Cookie'] = 'apikey='+self._conf['gm_apikey']
     if not 'Content-type' in hdrs:
       hdrs['Content-type'] = 'application/json'
@@ -76,4 +76,3 @@ class Exchange:
   def heartbeat(self):
     """Fetch alive status"""
     return self.root_fetch('/heartbeat', method='GET')
-
