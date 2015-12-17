@@ -5,7 +5,7 @@ class WebSock(WebSocketClient):
   def __init__(self, config, callback=print):
     self.url = self.url.format(**config)
     super(WebSock, self).__init__(self.url, protocols=['http-only', 'chat'])
-    self.call = output
+    self.call = callback
 
   def received_message(self, message):
     self.call(message)
