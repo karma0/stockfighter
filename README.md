@@ -67,6 +67,9 @@ You can use any of the above classes in the following form:
 
     from stockfighter.api.websocket import Quotes
 
+    def do_something(data):
+      print(data)
+
     conf = {
       'root_ws':'wss://www.stockfighter.io/ob/api/ws',
       'venue': 'TESTEX',
@@ -74,7 +77,7 @@ You can use any of the above classes in the following form:
       'account': 'EXB123456'
     }
     try:
-      e = Quotes(conf)
+      e = Quotes(conf, callback=do_something)
       e.connect()
       e.run_forever()
     except:

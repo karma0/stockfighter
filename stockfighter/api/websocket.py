@@ -2,7 +2,7 @@ from ws4py.client.threadedclient import WebSocketClient
 import time
 
 class WebSock(WebSocketClient):
-  def __init__(self, config, output=print):
+  def __init__(self, config, callback=print):
     self.url = self.url.format(**config)
     super(WebSock, self).__init__(self.url, protocols=['http-only', 'chat'])
     self.call = output
