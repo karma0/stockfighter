@@ -11,6 +11,9 @@ This will install it in your project:
     git clone https://github.com/karma0/stockfighter-io-trades.git sf
     ln -s sf/stockfighter-io-trades .
     cp sf/config.py.example sf/config.py
+    chmod 600 sf/config.py
+
+Proceed with configuration and execution.
 
 ### PyPi Install
 
@@ -24,7 +27,7 @@ Create your configuration using the config.py.example in the root of this projec
 
 1. Set your `apikey` and `gm_apikey` to the correct values associated with your account.  The `gm_apikey` can be found in the cookies while you're logged in on the site.
 
-2. Set your levelInstance variables.  You can find them by browsing (here)[https://www.stockfighter.io/ui/levels].
+2. Set your `levelInstance` variables.  You can find them by browsing [here](https://www.stockfighter.io/ui/levels).
 
 3. `from sf.config import *` This will initialize a `CONF` variable that you can pass around with class initializers.  This will also come with a `DEFCONF` variable that will allow you to use the TESTEX exchange, allowing you to go back and forth using different instantiated objects.
 
@@ -33,7 +36,7 @@ Create your configuration using the config.py.example in the root of this projec
 
 ### Start a game
 
-    from stockfighter-io-trades.api.game import *
+    from stockfighter-io-trades.api.game import Game
     from stockfighter-io-trades.config import *
     g = Game(CONF, 'sell_side')
     g.start_level()
@@ -94,7 +97,7 @@ Pass in:
 * _direction_ (optional): "buy" or "sell" (allows for generic call to `order`)
 * _order_type_ (optional): may be 'limit', 'market', 'fill-or-kill', or 'immediate-or-cancel'. Default: 'limit'
 
-Returns the (order object)[https://starfighter.readme.io/docs/place-new-order].
+Returns the [order object](https://starfighter.readme.io/docs/place-new-order).
 
 #### Market.bid(cost, quantity, order_type='limit')
 
@@ -102,15 +105,15 @@ Returns the (order object)[https://starfighter.readme.io/docs/place-new-order].
 * _quantity_: how many you want to buy
 * _order_type_ (optional): may be 'limit', 'market', 'fill-or-kill', or 'immediate-or-cancel'. Default: 'limit'
 
-Returns the (order object)[https://starfighter.readme.io/docs/place-new-order].
+Returns the [order object](https://starfighter.readme.io/docs/place-new-order).
 
 #### Market.status(order_id)
 
 Pass in:
 
-* _order_id_: The id passed back from in the (order object)[https://starfighter.readme.io/docs/place-new-order].
+* _order_id_: The id passed back from in the [order object](https://starfighter.readme.io/docs/place-new-order).
 
-Returns an updated copy of the (order object)[https://starfighter.readme.io/docs/place-new-order].
+Returns an updated copy of the [order object](https://starfighter.readme.io/docs/place-new-order).
 
 #### Market.cancel(order_id)
 
