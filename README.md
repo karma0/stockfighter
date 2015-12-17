@@ -1,4 +1,4 @@
-# stockfighter-io-trades
+# stockfighter
 
 A Python3 library for the Stockfighter Trades.Exec() API.
 
@@ -6,7 +6,7 @@ A Python3 library for the Stockfighter Trades.Exec() API.
 
 ### Installation
 
-    pip install stockfighter-io-trades
+    pip install stockfighter-io
 
 ## Configuration
 
@@ -22,14 +22,14 @@ Create your configuration using the config.py.example in the root of this projec
 
 ### Start a game
 
-    from stockfighter-io-trades.api.game import Game
+    from stockfighter.api.game import Game
     from config import *
     g = Game(CONF, 'sell_side')
     g.start_level()
 
 ### Interact with an exchange
 
-    from stockfighter-io-trades.exchange import Market
+    from stockfighter.exchange import Market
 
     m = Market(CONF)
     q = m.quote()
@@ -65,7 +65,7 @@ The four subclasses correspond to the same four Stockfighter websocket API calls
 
 You can use any of the above classes in the following form:
 
-    from stockfighter-io-trades.api.websocket import Quotes
+    from stockfighter.api.websocket import Quotes
 
     conf = {
       'root_ws':'wss://www.stockfighter.io/ob/api/ws',
