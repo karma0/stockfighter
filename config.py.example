@@ -9,13 +9,15 @@ DEFCONF = {
     "first_steps",
     "chock_a_block",
     "sell_side",
+    "dueling_bulldozers"
   ],
 
   # Put your level instance IDs here for quick lookup
   'levelInstances': {
-    "first_steps":   123,
-    "chock_a_block": 123,
-    "sell_side":     123,
+    "first_steps":          123,
+    "chock_a_block":        123,
+    "sell_side":            123,
+    "dueling_bulldozers":   123,
   },
 
   #'debug': True,
