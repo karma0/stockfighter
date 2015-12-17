@@ -121,10 +121,18 @@ All parameters are optional.  They are as follows:
 Example:
 
     def process(quote):
-      for k in ['bid','bidSize','bidDepth','ask','askSize','askDepth','last','lastSize']:
+      # Zero-out the missing fields
+      for k in [
+          'bid','bidSize','bidDepth',
+          'ask','askSize','askDepth',
+          'last','lastSize'
+        ]:
         quote[k] = quote[k] if k in quote else 0
-      print(("{bid}:{bidSize}:{bidDepth}\t{ask}:{askSize}:{askDepth}\t"+\
-            "{last}:{lastSize}").format(**quote))
+
+      # Display
+      print(("{bid:06d}:{bidSize:06d}:{bidDepth:06d}\t"+\
+            "{ask:06d}:{askSize:06d}:{askDepth:06d}\t"+\
+            "{last:06d}:{lastSize:06d}").format(**quote))
 
     def err():
       print("Shutting down...")
@@ -143,7 +151,7 @@ All parameters are optional.  They are as follows:
 
 #### Market.websocket(callback=print, on_error=none, objclass=Quotes)
 
-Creates a generic websocket using `objclass` class. Built-in classes available include the following, and correlate directly with the stockfighter.io websocket paths:
+Creates a generic websocket using `objclass` class. Built-in classes available include the following from `stockfighter.api.websocket`, and correlate directly with the stockfighter.io websocket paths:
 
 * `Executions`
 * `StockExecutions`
