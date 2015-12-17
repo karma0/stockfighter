@@ -118,6 +118,20 @@ All parameters are optional.  They are as follows:
 * _callback_: This function is called when a message is received, passing a parsed object.  Defaults to `pdump` from `stockfighter/utils` to print JSON.
 * _on_error_: This function is called upon exception. Nothing gets passed.
 
+Example:
+
+    def process(quote):
+      for k in ['bid','bidSize','bidDepth','ask','askSize','askDepth','last','lastSize']:
+        q[k] = q[k] if k in q else 0
+      print(("{bid}:{bidSize}:{bidDepth}\t{ask}:{askSize}:{askDepth}\t"+\
+            "{last}:{lastSize}").format(**q))
+
+    def err():
+      print("Shutting down...")
+
+    s = Market(CONF)
+    s.quotes(callback=process, on_error=err)
+
 #### Market.executions(callback, on_error)
 
 Creates an Executions websocket.
