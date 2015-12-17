@@ -2,7 +2,7 @@ from distutils.core import setup
 setup(
   name = 'stockfighter-io-trades',
   packages = ['stockfighter-io-trades'],
-  version = '0.1',
+  version = '0.1.1',
   description = 'An API wrapper for the Stockfighter.io Trades.Exec() system.',
   author = 'Bobby Larson',
   author_email = 'karma0@gmail.com',
