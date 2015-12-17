@@ -39,6 +39,6 @@ if __name__ == "__main__":
     e = Quotes(conf)
     e.connect()
     e.run_forever()
-  except KeyboardInterrupt:
+  except:
     e.close()
 

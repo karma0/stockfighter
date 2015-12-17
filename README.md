@@ -52,7 +52,35 @@ Output will be:
       'quoteTime': '2015-12-16T23:10:48.09910821Z'
     }
 
-### API
+### Web Socket API
+
+The web socket API uses `ws4py` on the backend, and incorporates the threaded client using four subclasses to instantiate the connections.  All classes can be used indentically and inherit the `threadedclient` from `ws4py`, so the functionality can be  extended in use.
+
+The four subclasses correspond to the same four Stockfighter websocket API calls, and are as follows:
+
+* `Executions`
+* `StockExecutions`
+* `Quotes`
+* `StockQuotes`
+
+You can use any of the above classes in the following form:
+
+    from stockfighter-io-trades.api.websocket import Quotes
+
+    conf = {
+      'root_ws':'wss://www.stockfighter.io/ob/api/ws',
+      'venue': 'TESTEX',
+      'stock': 'FOOBAR',
+      'account': 'EXB123456'
+    }
+    try:
+      e = Quotes(conf)
+      e.connect()
+      e.run_forever()
+    except:
+      e.close()
+
+### Market API
 
 #### Market.api_is_up()
 
