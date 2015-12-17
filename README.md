@@ -4,16 +4,29 @@ A Python3 library for the Stockfighter Trades.Exec() API.
 
 ## Usage
 
-    git clone https://github.com/karma0/stockfighter-io-trades.git stockfighter
-    cp stockfighter/config.py.example stockfighter/config.py
+### Local Project Install
+
+This will install it in your project:
+
+    git clone https://github.com/karma0/stockfighter-io-trades.git
+    ln -s stockfighter-io-trades/stockfighter stockfighter
+    cp stockfighter-io-trades/config.py.example stockfighter/config.py
+
+### PyPi Install
+
+Execute, then continue with configuration:
+
+    pip install stockfighter-io-trader
 
 ## Configuration
+
+Create your configuration using the config.py.example in the root of this project as an example, or copy it to `config.py`, and proceed with the following:
 
 1. Set your `apikey` and `gm_apikey` to the correct values associated with your account.  The `gm_apikey` can be found in the cookies while you're logged in on the site.
 
 2. Set your levelInstance variables.  You can find them by browsing (here)[https://www.stockfighter.io/ui/levels].
 
-3. `from config import *` This will initialize a `CONF` variable that you can pass around with class initializers.  This will also come with a `DEFCONF` variable that will allow you to use the TESTEX exchange, allowing you to go back and forth.
+3. `from stockfighter.config import *` This will initialize a `CONF` variable that you can pass around with class initializers.  This will also come with a `DEFCONF` variable that will allow you to use the TESTEX exchange, allowing you to go back and forth using different instantiated objects.
 
 
 ## Execution
@@ -31,7 +44,24 @@ A Python3 library for the Stockfighter Trades.Exec() API.
 
     m = Market(CONF)
     q = m.quote()
-    {'ask': 65535, 'askDepth': 15087, 'askSize': 15087, 'bid': 50, 'bidDepth': 3152, 'bidSize': 2490, 'last': 50, 'lastSize': 100, 'lastTrade': '2015-12-16T23:07:05.24319087Z', 'ok': True, 'quoteTime': '2015-12-16T23:10:48.09910821Z', 'symbol': 'FOOBAR', 'venue': 'TESTEX'}
+
+Output will be:
+
+    {
+      'ok': True,
+      'venue': 'TESTEX',
+      'symbol': 'FOOBAR',
+      'ask': 65535,
+      'askDepth': 15087,
+      'askSize': 15087,
+      'bid': 50,
+      'bidDepth': 3152,
+      'bidSize': 2490,
+      'last': 50,
+      'lastSize': 100,
+      'lastTrade': '2015-12-16T23:07:05.24319087Z',
+      'quoteTime': '2015-12-16T23:10:48.09910821Z'
+    }
 
 ### API
 
