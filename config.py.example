@@ -4,6 +4,7 @@ DEFCONF = {
 
   'api_url': "https://api.stockfighter.io/ob/api",
   'gm_url': "https://www.stockfighter.io/gm",
+  'root_ws': "https://www.stockfighter.io/ob/api/ws",
 
   'levels': [
     "first_steps",
