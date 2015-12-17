@@ -3,7 +3,7 @@ from setuptools import setup, find_packages
 setup(
   name = 'stockfighter-io',
   packages = find_packages(exclude=['dist']),
-  version = '0.1.4',
+  version = '0.1.5',
   description = 'An API wrapper for Stockfighter.io',
   author = 'Bobby Larson',
   author_email = 'karma0@gmail.com',
