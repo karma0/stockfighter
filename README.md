@@ -122,9 +122,9 @@ Example:
 
     def process(quote):
       for k in ['bid','bidSize','bidDepth','ask','askSize','askDepth','last','lastSize']:
-        q[k] = q[k] if k in q else 0
+        quote[k] = quote[k] if k in quote else 0
       print(("{bid}:{bidSize}:{bidDepth}\t{ask}:{askSize}:{askDepth}\t"+\
-            "{last}:{lastSize}").format(**q))
+            "{last}:{lastSize}").format(**quote))
 
     def err():
       print("Shutting down...")
