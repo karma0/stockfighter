@@ -52,37 +52,6 @@ Output will be:
       'quoteTime': '2015-12-16T23:10:48.09910821Z'
     }
 
-### Web Socket API
-
-The web socket API uses `ws4py` on the backend, and incorporates the threaded client using four subclasses to instantiate the connections.  All classes can be used indentically and inherit the `threadedclient` from `ws4py`, so the functionality can be  extended in use.
-
-The four subclasses correspond to the same four Stockfighter websocket API calls, and are as follows:
-
-* `Executions`
-* `StockExecutions`
-* `Quotes`
-* `StockQuotes`
-
-You can use any of the above classes in the following form:
-
-    from stockfighter.api.websocket import Quotes
-
-    def do_something(data):
-      print(data)
-
-    conf = {
-      'root_ws':'wss://www.stockfighter.io/ob/api/ws',
-      'venue': 'TESTEX',
-      'stock': 'FOOBAR',
-      'account': 'EXB123456'
-    }
-    try:
-      e = Quotes(conf, callback=do_something)
-      e.connect()
-      e.run_forever()
-    except:
-      e.close()
-
 ### Market API
 
 #### Market.api_is_up()
@@ -139,6 +108,39 @@ Pass in:
 * _order_id_: The id passed back from in the [order object](https://starfighter.readme.io/docs/place-new-order).
 
 Returns an updated (and final) copy of the [order object](https://starfighter.readme.io/docs/place-new-order).
+
+#### Market.quotes(callback, on_error)
+
+Creates a Quotes websocket.
+
+All parameters are optional.  They are as follows:
+
+* _callback_: This function is called when a message is received, passing a parsed object.  Defaults to `pdump` from `stockfighter/utils` to print JSON.
+* _on_error_: This function is called upon exception. Nothing gets passed.
+
+#### Market.executions(callback, on_error)
+
+Creates an Executions websocket.
+
+All parameters are optional.  They are as follows:
+
+* _callback_: This function is called when a message is received, passing a parsed object.  Defaults to `pdump` from `stockfighter/utils` to print JSON.
+* _on_error_: This function is called upon exception. Nothing gets passed.
+
+#### Market.websocket(callback=print, on_error=none, objclass=Quotes)
+
+Creates a generic websocket using `objclass` class. Built-in classes available include the following, and correlate directly with the stockfighter.io websocket paths:
+
+* `Executions`
+* `StockExecutions`
+* `Quotes`
+* `StockQuotes`
+
+All parameters are optional.  They are as follows:
+
+* _callback_: This function is called when a message is received, passing a parsed object.  Defaults to `pdump` from `stockfighter/utils` to print JSON.
+* _on_error_: This function is called upon exception. Nothing gets passed.
+* _objclass_: This is one of the classes listed above, or a similar implement.
 
 ## Contributing
 

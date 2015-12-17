@@ -1,6 +1,8 @@
 from .api.exchange import Exchange
+from .api.websockets import Quotes, Executions
 from .utils import dump, pdump
 
+import json
 
 # EXCHANGE
 
@@ -60,4 +62,28 @@ class Market:
   def cancel(self, oid):
     ex = Exchange(self._conf)
     return ex.fetch("/orders/{}".format(oid), method='DELETE')
+
+  def websocket(self, callback=pdump, on_error=None, objclass=Quotes):
+    def process(m):
+      if m.is_text:
+        data = m.data.decode("utf-8")
+        out = json.loads(data)
+        if 'ok' in out and out['ok']:
+          q = out['quote']
+          callback(q)
+    try:
+      e = objclass(self._conf, process)
+      e.connect()
+      e.run_forever()
+    except:
+      if on_error:
+        on_error()
+    finally:
+      e.close()
+
+  def quotes(self, callback=pdump, on_error=None):
+    self.websocket(callback, on_error, objclass=Quotes)
+
+  def executions(self, callback=pdump, on_error=None):
+    self.websocket(callback, on_error, objclass=Executions)
 
