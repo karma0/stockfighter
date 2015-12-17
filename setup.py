@@ -1,6 +1,6 @@
 from distutils.core import setup
 setup(
-  name = 'stockfighter-io-trades',
+  name = 'stockfighter-io',
   packages = ['stockfighter'],
   version = '0.1.3',
   description = 'An API wrapper for Stockfighter.io',
