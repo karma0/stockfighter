@@ -1,5 +1,5 @@
 from .api.exchange import Exchange
-from .api.websockets import Quotes, Executions
+from .api.websocket import Quotes, Executions
 from .utils import dump, pdump
 
 import json
