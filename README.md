@@ -119,9 +119,9 @@ Returns an updated copy of the [order object](https://starfighter.readme.io/docs
 
 Pass in:
 
-* _order_id_: The id passed back from in the (order object)[https://starfighter.readme.io/docs/place-new-order].
+* _order_id_: The id passed back from in the [order object](https://starfighter.readme.io/docs/place-new-order).
 
-Returns an updated (and final) copy of the (order object)[https://starfighter.readme.io/docs/place-new-order].
+Returns an updated (and final) copy of the [order object](https://starfighter.readme.io/docs/place-new-order).
 
 ## Contributing
 
