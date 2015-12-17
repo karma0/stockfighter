@@ -8,15 +8,15 @@ A Python3 library for the Stockfighter Trades.Exec() API.
 
 This will install it in your project:
 
-    git clone https://github.com/karma0/stockfighter-io-trades.git
-    ln -s stockfighter-io-trades/stockfighter stockfighter
-    cp stockfighter-io-trades/config.py.example stockfighter/config.py
+    git clone https://github.com/karma0/stockfighter-io-trades.git sf
+    ln -s sf/stockfighter-io-trades .
+    cp sf/config.py.example sf/config.py
 
 ### PyPi Install
 
 Execute, then continue with configuration:
 
-    pip install stockfighter-io-trader
+    pip install stockfighter-io-trades
 
 ## Configuration
 
@@ -26,21 +26,21 @@ Create your configuration using the config.py.example in the root of this projec
 
 2. Set your levelInstance variables.  You can find them by browsing (here)[https://www.stockfighter.io/ui/levels].
 
-3. `from stockfighter.config import *` This will initialize a `CONF` variable that you can pass around with class initializers.  This will also come with a `DEFCONF` variable that will allow you to use the TESTEX exchange, allowing you to go back and forth using different instantiated objects.
+3. `from sf.config import *` This will initialize a `CONF` variable that you can pass around with class initializers.  This will also come with a `DEFCONF` variable that will allow you to use the TESTEX exchange, allowing you to go back and forth using different instantiated objects.
 
 
 ## Execution
 
 ### Start a game
 
-    from stockfighter.api.game import *
-    from stockfighter.config import *
+    from stockfighter-io-trades.api.game import *
+    from stockfighter-io-trades.config import *
     g = Game(CONF, 'sell_side')
     g.start_level()
 
 ### Interact with an exchange
 
-    from stockfighter.exchange import Market
+    from stockfighter-io-trades.exchange import Market
 
     m = Market(CONF)
     q = m.quote()
