@@ -53,7 +53,7 @@ class Market:
     return ex.fetch("/orders", data=order, method='POST')
 
   def bid(self, cost, quantity, order_type='limit'):
-    return self.ask(cost, quantity, "buy", order_type)
+    return self.ask(cost, quantity, direction="buy", order_type=order_type)
 
   def status(self, oid):
     ex = Exchange(self._conf)
@@ -69,8 +69,12 @@ class Market:
         data = m.data.decode("utf-8")
         out = json.loads(data)
         if 'ok' in out and out['ok']:
-          q = out['quote']
-          callback(q)
+          if 'quote' in out:
+            q = out['quote']
+            return callback(q)
+          else:
+            return callback(out)
+
     try:
       e = objclass(self._conf, process)
       e.connect()
@@ -81,9 +85,11 @@ class Market:
     finally:
       e.close()
 
+    return e
+
   def quotes(self, callback=pdump, on_error=None):
-    self.websocket(callback, on_error, objclass=Quotes)
+    return self.websocket(callback, on_error, objclass=Quotes)
 
   def executions(self, callback=pdump, on_error=None):
-    self.websocket(callback, on_error, objclass=Executions)
+    return self.websocket(callback, on_error, objclass=Executions)
 
