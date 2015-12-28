@@ -1,3 +1,6 @@
+# coding=utf-8
+import json
+
 # Dump data to readable JSON format
 def dump(data):
   try:

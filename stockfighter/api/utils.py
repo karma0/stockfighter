@@ -1,3 +1,5 @@
+# coding=utf-8
+
 def validate(resp):
   """Validates that a response came back valid"""
   if resp != None:

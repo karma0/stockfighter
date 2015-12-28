@@ -1,3 +1,5 @@
+# coding=utf-8
+
 import requests
 import json
 from .utils import validate
@@ -18,22 +20,22 @@ class Exchange:
   def _get_headers(self, hdrs=None):
     if not hdrs:
       hdrs = {}
-    if not 'X-Starfighter-Authorization' in hdrs:
+    if 'X-Starfighter-Authorization' not in hdrs:
       hdrs['X-Starfighter-Authorization'] = self._conf['apikey']
-    if not 'Cookie' in hdrs and 'gm_apikey' in self._conf:
+    if 'Cookie' not in hdrs and 'gm_apikey' in self._conf:
       hdrs['Cookie'] = 'apikey='+self._conf['gm_apikey']
-    if not 'Content-type' in hdrs:
+    if 'Content-type' not in hdrs:
       hdrs['Content-type'] = 'application/json'
-    if not 'Accept' in hdrs:
+    if 'Accept' not in hdrs:
       hdrs['Accept'] = 'text/plain'
     return hdrs
 
   def fetch(self, path='', config=None, hdrs=None, data=None,
             method=None, root=None):
     """Basic fetch from API"""
-    config = config if not config is None else self._conf
-    method = method if not method is None else self._method
-    root   = root if not root is None else self._stock_path
+    config = config if config else self._conf
+    method = method if method else self._method
+    root   = root if root else self._stock_path
     url = root+path
 
     hdrs = self._get_headers()
