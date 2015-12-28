@@ -79,7 +79,7 @@ Returns a quote for the given stock.
 Pass in:
 
 * _cost_: price you're asking for
-* _quantity_: how many you want to buy
+* _quantity_: how many you want to sell
 * _direction_ (optional): "buy" or "sell" (allows for generic call to `order`)
 * _order_type_ (optional): may be 'limit', 'market', 'fill-or-kill', or 'immediate-or-cancel'. Default: 'limit'
 
