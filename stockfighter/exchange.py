@@ -1,3 +1,5 @@
+# coding=utf-8
+
 from .api.exchange import Exchange
 from .api.websocket import Quotes, Executions
 from .utils import dump, pdump

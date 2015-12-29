@@ -1,3 +1,5 @@
+# coding=utf-8
+
 import requests
 from ..utils import *
 from .utils import validate
@@ -19,9 +21,9 @@ class Game:
 
   def fetch(self, path='', config=None, hdrs=None, data=None, method=None, root=None):
     """Basic fetch from API"""
-    config = config if not config is None else self._conf
-    method = method if not method is None else self._method
-    root = root if not root is None else self._root_path
+    config = config if config else self._conf
+    method = method if method else self._method
+    root = root if root else self._root_path
 
     hdrs = self._get_headers()
 

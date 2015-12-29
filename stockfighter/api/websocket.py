@@ -1,3 +1,5 @@
+# coding=utf-8
+
 from ws4py.client.threadedclient import WebSocketClient
 import time
 
